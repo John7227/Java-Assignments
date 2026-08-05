@@ -1,48 +1,61 @@
-import java.util.Scanner;;
-
 public class CreditCardValidator {
 
-//    public static int visaCards(int[] creditCardNumbers) {
-//
-//
-//    }
+    public static boolean visaCardOf(long creditCardNumbers) {
+
+        int counter = 0;
+
+        while(creditCardNumbers != 0) {
+            creditCardNumbers = creditCardNumbers / 10;
+            counter++;
+        }
+            
+        if(counter >= 13 && counter <= 16) {
+            return true;
+        }
+
+    return false;
+    }
 
 
-
-
-
-
-    public static void main(String[] args) {
-
-    Scanner input = new Scanner(System.in);
-
-    System.out.print("Enter Credit Card Numbers: ");
-    int creditCardNumbers = input.nextInt();
-
-    //int[] creditCardNumbers = {};
+    public static String typeOfCard(long creditCardNumbers) {
 
     int counter = 0;
 
-        for(int count = 0; count <= 16; count++) {
+    while(creditCardNumbers >= 10) {
+        creditCardNumbers = creditCardNumbers / 10;
         counter++;
-            if(counter != 13 || counter != 16) {
-                System.out.println("Invalid input");
-                break;
-            }
-            else{
-                System.out.println("Sccessful");    
-            }
-
-        }
-
-
-
-
-
-
+    }
+    if(creditCardNumbers == 4) {
+        return "Visa Cards";
+    }
+    else if(creditCardNumbers == 5) {
+        return "MasterCard";
+    }
+    
+    else if(creditCardNumbers == 6) {
+        return "Discover cards";
+    }
+    else {
+        return "Invalid Card Number";
+    }
 
     }
 
+
+   public static String americanExpressCard(long creditCardNumbers) {
+
+    int counters = 0;
+
+    while(creditCardNumbers >= 40) {
+        creditCardNumbers = creditCardNumbers / 10;
+        counters++;
+    }
+    if(creditCardNumbers == 37) {
+        return "American Express Cards";
+    }
+
+    return "Invalid Card Number";
+    }
 
 
 
@@ -51,6 +64,3 @@ public class CreditCardValidator {
 
 
 
-//            if(creditCardNumbers[count] != 12 || creditCardNumbers[count] != 15) {
-//            System.out.println("Invalid input!");
-//            break;
